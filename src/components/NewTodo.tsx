@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 
-const NewTodo = () => {
+//  An example for how to pass a function in as a prop and make it TypeScript-typed!
+const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
   //  Refs need types in TypeScript. This is the right type for this one
   //  It also needs a starting value of null.
   const todoTextInputRef = useRef<HTMLInputElement>(null);
@@ -22,6 +23,7 @@ const NewTodo = () => {
       //  throw an error
       return;
     }
+    props.onAddTodo(enteredText);
   };
   //  Don't forget the "htmlFor" and the "id" for accessability!
   return (
