@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 
+import classes from "./NewTodo.module.css";
+
 //  An example for how to pass a function in as a prop and make it TypeScript-typed!
 const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
   //  Refs need types in TypeScript. This is the right type for this one
@@ -27,7 +29,7 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
   };
   //  Don't forget the "htmlFor" and the "id" for accessability!
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={classes.form}>
       <label htmlFor="text">Todo text</label>
       <input type="text" id="text" ref={todoTextInputRef} />
       <button>Add Todo</button>
