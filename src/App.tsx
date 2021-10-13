@@ -18,10 +18,18 @@ function App() {
     });
   };
 
+  const removeTodoHandler = (todoId: string) => {
+    // Why is there a function (return) inside of this useState()?
+    setTodos((prevTodos) => {
+      //  Keep all the todos where the ids do not match the index to delete.
+      return prevTodos.filter((todo) => todo.id !== todoId);
+    });
+  };
+
   return (
     <div>
       <NewTodo onAddTodo={addTodoHandler} />
-      <Todos items={todos} />
+      <Todos items={todos} onRemoveTodo={removeTodoHandler} />
     </div>
   );
 }
